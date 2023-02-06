@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -13,7 +14,7 @@ admin.use(express.static(__dirname+"../uploads/"))
 
 //mongodb+srv://root:190430@cluster0.4aeqend.mongodb.net/Stationary
 //mongodb+srv://root:190430@cluster0.4aeqend.mongodb.net/<Stationary>?retryWrites=true&w=majority
-mongoose.connect('mongodb+srv://root:190430@cluster0.4aeqend.mongodb.net/Stationary',(err)=>console.log('connected....'))
+mongoose.connect('process.env.MONGO_URI',(err)=>console.log('connected....'))
 
 const ProductSchema = mongoose.Schema({
     productname:String,
@@ -103,4 +104,4 @@ admin.delete('/product/:id',async(req,res)=>{
 
 })
 
-admin.listen(4000,(err)=>console.log('running on 4000'))
+admin.listen(process.env.PORT_NUMBER,(err)=>console.log('running'))

@@ -3,6 +3,7 @@ import { Button, Form, InputGroup } from 'react-bootstrap'
 import {BsFillTrashFill} from 'react-icons/bs'
 import { json, Link, useParams } from 'react-router-dom'
 import Header from './Component/Header'
+const BASE_URL =process.env.BASE_URL
 
 function ProductInfo() {
   const [showItems, setshowItems] = useState([])
@@ -11,7 +12,8 @@ function ProductInfo() {
 
 
   const ShowProduct = async () => {
-    let data = await fetch('/product', {
+    console.log('entered showproduct')
+    let data = await fetch(`${BASE_URL}/product`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
