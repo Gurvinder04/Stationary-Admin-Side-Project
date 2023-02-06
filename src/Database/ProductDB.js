@@ -78,7 +78,7 @@ admin.get('/products/:category',async(req,res)=>{
 admin.post('/product', upload.single('fileimage'),(req,res)=>{
     //console.log(req.body.file,'sucesssssssss')
     const newProduct = new Product({ productname: req.body.productname,category:req.body.category,description: req.body.description, price: req.body.rate, quantity: req.body.quantity, image:req.file.filename,feature: req.body.feature})
-    // req.files[0].paths
+    //req.files[0].paths
     newProduct.save()
         .then(result => {
             console.log('successfully saved')
